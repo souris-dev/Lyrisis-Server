@@ -34,9 +34,11 @@ def reference():
 @app.route('/predict')
 def predict():
     artist_name = str(request.args['artist'])
-    temperature = str(request.args['temp'])
+    temperature = float(request.args['temp'])
     seed = str(request.args['seed'])
     n_next_words = int(request.args['nwords'])
+
+    print(artist_name, temperature, seed, n_next_words)
 
     # Preprocess the seed
     seed = re.sub('([*#@$%,?!()&*-./:[\]^_~\n])', r' \1 ', seed)
@@ -56,8 +58,8 @@ def predict():
 
     if nl_count > 0:
         seed = seed + ' ' + out_text if not seed.endswith(' ') else seed + out_text
-        out_text = gen_text(seed, nl_count, SEQ_LEN, temperature, artist_name)
+        out_text += ' ' + gen_text(seed, nl_count, SEQ_LEN, temperature, artist_name)
 
-    out_words = {'words': [word.lstrip('\n') for word in out_text.split(' ')]}
+    out_words = {'words': out_text.split(' ')}
 
     return json.dumps(out_words)

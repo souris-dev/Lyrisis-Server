@@ -80,6 +80,7 @@ def gen_text(seed: str, n_next_words: int, seq_len: int, temperature: float, art
         # print(out_word)
 
         if out_word == '|':  # the model is trying to start a new song... so finish up
+            print('New song!')
             break
 
         if not out_word.endswith('\n'):
