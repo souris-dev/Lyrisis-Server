@@ -13,6 +13,10 @@ from app.models import gen_text, SEQ_LEN, MODELS_LOADED, TOKS_LOADED
 def favicon():
     return send_file('static/favicon.ico')
 
+@app.route('/download')
+def download():
+    return send_file('static/Lyrisis.apk', as_attachment=True, attachment_filename="Lyrisis.apk")
+
 @app.route('/')
 def index():
     return render_template('index.html')
