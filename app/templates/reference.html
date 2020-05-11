@@ -63,16 +63,15 @@
 
         <h2>How It Works</h2>
         <br>
-        <p>The Flutter app takes an user input in the form of a drawing. This drawing is converted into <code>base64</code> encoding and sent to the server.</p>
-        <p>The server at the "/predict" endpoint receives the string, decodes it and retrieves the image.</p>
-        <p>This image is then preprocessed and fed into the neural network model that generates the prediction.</p>
-        <p>(The model has been trained on the MNIST dataset.)</p>
+        <p>The Flutter app takes in the seed, the temperature, the artist style and the number of words to be predicted.</p>
+        <p>This information is passed on to the server, which tries to predict the next specified number of words.</p>
+        <p>The predicted words are returned to the Flutter client app, where they are displayed to the user.</p>
         <br />
 
         <p>The code for the client can be found at: </p>
-        <p><a href="https://github.com/souris-dev/who-digit-client">Flutter app source</a></p>
+        <p><a href="https://github.com/souris-dev/Lyrisis-Client-App">Flutter app source</a></p>
         <p>The code for the server is available at:</p>
-        <p><a href="https://github.com/souris-dev/who-digit-server">Flask REST API source</a></p>
+        <p><a href="https://github.com/souris-dev/Lyrisis-Server">Flask REST API source</a></p>
 
         <br>
         <h2>Deployment of The REST API</h2>
