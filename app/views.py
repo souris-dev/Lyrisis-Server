@@ -35,12 +35,20 @@ def reference():
 
 # Now for the actual predictor api
 
-@app.route('/predict')
+@app.route('/predict', methods=['POST', 'GET'])
 def predict():
-    artist_name = str(request.args['artist'])
-    temperature = float(request.args['temp'])
-    seed = str(request.args['seed'])
-    n_next_words = int(request.args['nwords'])
+
+    if request.method == 'GET':
+        artist_name = str(request.args['artist'])
+        temperature = float(request.args['temp'])
+        seed = str(request.args['seed'])
+        n_next_words = int(request.args['nwords'])
+
+    elif request.method == 'POST':
+        artist_name = str(request.form['artist'])
+        temperature = float(request.form['temp'])
+        seed = str(request.form['seed'])
+        n_next_words = int(request.form['nwords'])
 
     print(artist_name, temperature, seed, n_next_words)
 
