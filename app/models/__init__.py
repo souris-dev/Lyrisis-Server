@@ -11,6 +11,10 @@ import numpy as np
 import os
 
 taylor_swift_model = load_model(os.path.join(os.getcwd(), 'app' , 'models', 'Taylor_Swift.h5'))
+kanye_west_model = load_model(os.path.join(os.getcwd(), 'app' , 'models', 'Kanye_West.h5'))
+celine_dion_model = load_model(os.path.join(os.getcwd(), 'app' , 'models', 'Celine_Dion.h5'))
+eminem_model = load_model(os.path.join(os.getcwd(), 'app' , 'models', 'Eminem.h5'))
+adele_model = load_model(os.path.join(os.getcwd(), 'app' , 'models', 'Adele.h5'))
 MODELS_LOADED = True
 
 
@@ -24,6 +28,10 @@ def get_tokenizer(artist_name: str) -> Tokenizer:
 
 
 taylor_swift_tok = get_tokenizer('Taylor_Swift')
+kanye_west_tok = get_tokenizer('Kanye_West')
+adele_tok = get_tokenizer('Adele')
+eminem_tok = get_tokenizer('Eminem')
+celine_dion_tok = get_tokenizer('Celine_Dion')
 TOKS_LOADED = True
 
 
@@ -52,6 +60,18 @@ def gen_text(seed: str, n_next_words: int, seq_len: int, temperature: float, art
     if artist_name == 'Taylor_Swift':
         model = taylor_swift_model
         tokenizer = taylor_swift_tok
+    elif artist_name == 'Kanye_West':
+        model = kanye_west_model
+        tokenizer = kanye_west_tok
+    elif artist_name == 'Celine Dion':
+        model = celine_dion_model
+        tokenizer = celine_dion_tok
+    elif artist_name == 'Eminem':
+        model = eminem_model
+        tokenizer = eminem_tok
+    elif artist_name == 'Adele':
+        model = adele_model
+        tokenizer = adele_tok
     else:
         raise NotImplementedError('Only Taylor Swift is available right now!')
 
